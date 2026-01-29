@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Challenge: Create a solar system</title>
+        <style>
+            body {
+                background-color: black;
+                padding: 10px;
+                margin: auto;
+            }
+            .listPlanets {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .planet {
+                width: 300px;
+                height: 200px;
+                border-radius: 50%;
+                text-align: center;
+                padding: 10px;
+                position: relative;
+                border: 2px solid white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+            }
+            .dividend{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .moon {
+                /* position: absolute; */
+                width: 60px;
+                height: 50px;
+                border-radius: 50%;
+                background: rgb(237, 237, 237);
+                border: 1px solid red;
+                color: brown;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 3px;
+                margin: 5px;
+            }
+
+            
+            .mercury {
+                background: linear-gradient(to bottom, #a9a9a9, #696969);
+                display: flex;
+            }
+            .venus {
+                background: linear-gradient(to bottom, #e6bc73, #d4a05d);
+                display: flex;
+            }
+            .earth {
+                background: linear-gradient(to bottom, #4b7088, #2c5c70);
+                display: flex;
+            }
+            .mars {
+                background: linear-gradient(to bottom, #c1440e, #8b2e00);
+            }
+            .jupiter {
+                background: linear-gradient(to bottom, #d8ca9d, #b8a070);
+            }
+            .saturn {
+                background: linear-gradient(to bottom, #f5e5b3, #d8c28a);
+            }
+            .uranus {
+                background: linear-gradient(to bottom, #a0d8ef, #70b0c0);
+            }
+            .neptune {
+                background: linear-gradient(to bottom, #4b7088, #2c5c70);
+            }
+        </style>
+    </head>
+    <body>
+
+    <section class="listPlanets"></section>
+
+    <script src="./challenges.js"></script>
+    </body>
+</html>

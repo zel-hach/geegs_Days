@@ -24,17 +24,18 @@ function maxBMI(){
     else
         console.log(`BMI of person2 is higher than person1. Name: ${person2.fullName}`);
 }
+maxBMI();
 // ===== Exercise 2
 
 function findAvg(gradesList){
-    const sum = 0;
-    for(let i = 0;i<gradesList.lenght ; i++)
+    let sum = 0;
+    for(let i = 0;i< gradesList.length ; i++)
     {
-        sum +=gradesList[i];
+        sum += gradesList[i];
     }
-    let evrage = sum /gradesList.lengh;
-    console.log(" the average: ",evrage);
-    if(evrage > 65)
+    let average = sum / gradesList.length;
+    console.log(" the average: ",average);
+    if(average > 65)
     {
         console.log("you are succes average");
     }
@@ -42,6 +43,7 @@ function findAvg(gradesList){
         console.log("your average not valid");
     }
 }
+findAvg([80, 77, 88, 95, 68]);
 
 // ===== Exercise 3
 

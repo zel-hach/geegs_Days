@@ -1,0 +1,12 @@
+let shoppingList=[];
+const div = document.getElementById('root');
+const form = document.createElement('form');
+const input = document.createElement('input');
+input.type = 'text';
+input.placeholder = 'Enter item';
+const addButton = document.createElement('button');
+addButton.type = 'submit';
+addButton.textContent = 'Add Item';
+form.appendChild(input);
+form.appendChild(addButton);
+div.appendChild(form);

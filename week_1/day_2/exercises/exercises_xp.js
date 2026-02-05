@@ -126,8 +126,82 @@ function totalVacationCost() {
 }
 
 console.log(totalVacationCost());
-// ===== Exercice 5 check other files user.html and user.js
 
-// ===== Exercice 6 check other files NavBar.html and navBar.js
+// ===== Exercice 5 check other files user.html 
 
-// ===== Exercice 7 check other files BookList.html and BookList.js
+// exercice 5
+const div = document.getElementById("container");
+// console.log(div);
+
+const lists = document.getElementsByTagName('li');
+// console.log(lists[1].innerHTML);
+lists[1].innerHTML = "Richard";
+// console.log(lists[1].innerHTML);
+const Listsul = document.getElementsByClassName('list');
+Listsul[1].getElementsByTagName('li')[1].remove();
+
+// console.log(Listsul);
+for(let i = 0 ;i<Listsul.length;i++)
+{
+    Listsul[i].getElementsByTagName('li')[0].innerHTML = "Zineb";
+    Listsul[i].classList +=' student_list';
+    console.log(Listsul[i].innerHTML);
+}
+
+Listsul[0].classList +=' university attendance';
+
+div.style="padding:5px;background-color:lightblue";
+
+for(l of lists){
+    if(l.innerHTML ==="Dan")
+        l.style = "display:none";
+    if(l.innerHTML ==="Richard")
+        l.style = "border:1px solid black";
+}
+document.body.style.fontSize= "30px";
+if(div.style.backgroundColor === "lightblue")
+    alert("Hello x and y");
+
+// ===== Exercice 6 check other files NavBar.html
+
+const div = document.getElementById('navBar');
+div.setAttribute('id','socialNetworkNavigation');
+// console.log(div);
+const list = document.getElementsByTagName('ul');
+const li1 = document.createElement('li');
+li1.innerHTML = "logout";
+list[0].appendChild(li1);
+
+console.log(`firstElement: ${list[0].firstElementChild.textContent} lastElement: ${list[0].lastElementChild.textContent}`)
+
+
+// ===== Exercice 7 check other files BookList.html
+const allBooks = [
+     {
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    image: "https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-cloudy-background-beautiful-natural-streaks-of-sky-and-clouds-red-image_15684333.jpg",
+    alreadyRead: true
+  },
+  {
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    image: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14235/production/_100058428_mediaitem100058424.jpg",
+    alreadyRead: false
+  }
+]
+
+const section = document.getElementsByClassName("listBooks");
+for(let book of allBooks){
+    const div = document.createElement("div");
+    const p = document.createElement("p");
+    p.innerText = book.title + " " + book.author;
+    const img = document.createElement("img");
+    img.src=book.image;
+    img.width=100;
+    if(book.alreadyRead)
+      p.style.color ="red";
+    div.appendChild(p);
+    div.appendChild(img);
+    section[0].appendChild(div);
+}

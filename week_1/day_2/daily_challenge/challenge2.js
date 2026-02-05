@@ -1,3 +1,11 @@
+function displayseparatedWords(length){
+    let line = '';
+    for(let i=0 ; i<length; i++){
+        line += '*';
+    }
+    console.log(line);
+}
+
 const readline = require('readline-sync');
 const text = readline.question("Please enter a sentence: ");
 if(!text){

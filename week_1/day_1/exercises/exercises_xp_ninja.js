@@ -5,7 +5,7 @@ const person1 = {
   mass: 68,
   height: 1.65,
 calculateBodyMass : function (){//BMI = mass/height * height
-    return mass/(this.height * this.height);
+    return this.mass/(this.height * this.height);
   }
 };
 
@@ -14,12 +14,12 @@ const person2 = {
   mass: 85,
   height: 1.8,
   calculateBodyMass : function (){//BMI = mass/height * height
-    return mass/(this.height * this.height);
+    return this.mass/(this.height * this.height);
   }
 };
 
 function maxBMI(){
-    if(person1.calculateBodyMass > person2.calculateBodyMass)
+    if(person1.calculateBodyMass() > person2.calculateBodyMass())
         console.log(`BMI of person1 is higher than person2. Name: ${person1.fullName}`);
     else
         console.log(`BMI of person2 is higher than person1. Name: ${person2.fullName}`);

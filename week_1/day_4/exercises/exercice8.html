@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>exercice8</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+    function makeJuice(size){
+    const Ingredients = []
+    function addIngredients(firstIngredient,secondIngredient,thirdIngredient){
+        Ingredients.push(firstIngredient,secondIngredient,thirdIngredient);
+    }
+    function DisplayJuice(){
+        const sentence = `The client wants a ${size} juice, containing ${Ingredients.join(",")}.`
+        document.body.textContent = sentence;
+    }
+    addIngredients('banana','appel','orange');
+    DisplayJuice();
+}
+makeJuice(20);
+    </script>
+</html>

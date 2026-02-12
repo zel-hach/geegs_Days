@@ -75,8 +75,9 @@
     }
   const colorscards = document.getElementsByClassName('colorscards');
   for(let c of colorscards){
-        c.addEventListener('click' ,(e)=>{
+        c.addEventListener('mouseover' ,(e)=>{
             e.target.style.backgroundColor = color1;
+            console.log("test");
         })
     }
     const clear = document.getElementById('clear');

@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>miniProjet</title>
+    </head>
+    <body>
+        <style>
+            .container{
+                display: flex;
+                width: 100%;
+            }
+            .palet{
+            display: flex;
+            flex-wrap: wrap;
+            }
+            .colors{
+            display: flex;
+            flex-wrap: wrap;
+            width: 75%;
+            }
+            .cards{
+                width: 147px;
+                height: 113px;
+                border: 2px solid black;
+            }
+            .colorscards{
+                width: 20px;
+                height: 30px;
+                border: 1px solid black;
+            }
+        </style>
+        <div class="container" id="container">
+            <div style="display:flex;flex-direction:column;width: 25%;">
+                <div id ="clear" style="width: 97%;height:80px;border:1px solid black;border-radius:5%;margin:5px; display:flex;justify-content:center;align-items:center"> <p style="text-align: center;font-size:30px">Clear</p></div>
+                <div class="palet" id="palet">
+                </div>
+            </div>
+            <div class="colors" id="colors">
+            </div>
+        </div>
+    </body>
+    <script>
+        let color1;
+        const color = [
+  "red", "#3CB44B", "#FFE119", "#4363D8", "#F58231",
+  "#911EB4", "#46F0F0", "#F032E6", "#BCF60C", "#FABEBE",
+  "#008080", "#E6BEFF", "#9A6324", "#FFFAC8", "#800000",
+  "#AAFFC3", "#808000", "#FFD8B1", "#000075", "#808080",
+  "#FF4500",
+ 
+];
+
+        const palet = document.getElementById("palet");
+        const colors = document.getElementById("colors");
+        for(let c of color)
+        {
+            const p = document.createElement('div');
+            p.classList.add('cards');
+            p.setAttribute('id','cards');
+            p.style.backgroundColor=c;
+            palet.appendChild(p);
+        }
+        for(let i = 0 ; i<1674; i++){
+            const p = document.createElement('div');
+            p.classList.add('colorscards');
+            p.setAttribute('id','colorscards');
+            colors.appendChild(p);
+        }
+    const cards = document.getElementsByClassName('cards');
+    for(let c of cards)
+    {
+        c.addEventListener('click',(e)=>{
+            color1 = getComputedStyle(e.target).backgroundColor;
+        })
+    }
+  const colorscards = document.getElementsByClassName('colorscards');
+  for(let c of colorscards){
+        c.addEventListener('click' ,(e)=>{
+            e.target.style.backgroundColor = color1;
+        })
+    }
+    const clear = document.getElementById('clear');
+    clear.addEventListener('click',(e)=>{
+        for(let c of colorscards)
+        {
+            c.style.backgroundColor ="white";
+        }
+    });
+    </script>
+</html>

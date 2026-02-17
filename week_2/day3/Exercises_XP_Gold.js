@@ -1,0 +1,34 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////Exercice 1 ///////////////////////////////////////////////////////////
+
+
+function printFullName({first,last}){
+    return `Your full name is ${first} ${last}`;
+}
+console.log(printFullName({first: 'Elie', last:'Schoppik'}) );
+
+/////////////////////////////////////////////////////////////////////////////////////////////////Exercice 2 ///////////////////////////////////////////////////////////
+const keysAndValues = (obj)=>{
+    const result = [Object.keys(obj), Object.values(obj)];
+    return result
+}
+console.log(keysAndValues({ a: 1, b: 2, c: 3 }))
+
+/////////////////////////////////////////////////////////////////////////////////////////////////Exercice 3 ///////////////////////////////////////////////////////////
+class Counter {
+  constructor() {
+    this.count = 0;
+  }
+
+  increment() {
+    this.count++;
+  }
+}
+
+const counterOne = new Counter();
+counterOne.increment();
+counterOne.increment();
+
+const counterTwo = counterOne;
+counterTwo.increment();
+
+console.log(counterOne.count); //3 class instance copied by reference

@@ -1,0 +1,84 @@
+<!--Exercice1-->
+<!--The form data is appended to the URL
+
+It appears in the address bar-->
+<html>
+    <head>
+        <title>Exercice1</title>
+    </head>
+    <body>
+        <form method="GET" action="index.html">
+            <div>
+                <label for="name">name</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea name="message" id="message"></textarea>
+            </div>
+            <div>
+                <input type="submit" name="submit" id="submit">
+            </div>
+        </form>
+    </body>
+</html>
+
+<!--Exercice2-->
+
+<!--The data is NOT shown in the URL
+
+It is sent inside the HTTP request body -->
+<html>
+    <head>
+        <title>Exercice1</title>
+    </head>
+    <body>
+        <form method="POST" action="">
+            <div>
+                <label for="name">name</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea name="message" id="message"></textarea>
+            </div>
+            <div>
+                <input type="submit" name="submit" id="submit">
+            </div>
+        </form>
+    </body>
+
+
+    <!--Exercices3-->
+    <script>
+        const marioGame = {
+  detail : "An amazing game!",
+  characters : {
+      mario : {
+        description:"Small and jumpy. Likes princesses.",
+        height: 10,
+        weight: 3,
+        speed: 12,
+      },
+      bowser : {
+        description: "Big and green, Hates princesses.",
+        height: 16,
+        weight: 6,
+        speed: 4,
+      },
+      princessPeach : {
+        description: "Beautiful princess.",
+        height: 12,
+        weight: 2,
+        speed: 2,
+      }
+  },
+}
+const data = JSON.stringify(marioGame);
+console.log(data);
+// The nested objects are also converted into JSON format.
+debugger;
+const prettyJsonGame = JSON.stringify(marioGame, null, 2);
+
+</script>
+</html>

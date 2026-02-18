@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>result</title>
+    </head>
+    <body>
+        <section id="section"></section>
+    </body>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        console.log(params);
+        const name = params.get("name");
+        const lastname = params.get("lastname");
+        console.log(name,lastname)
+        const section = document.getElementById("section");
+
+        section.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Last Name:</strong> ${lastname}</p>
+        `;
+  </script>
+</html>

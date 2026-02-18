@@ -25,6 +25,6 @@ console.log("test=======")
 const data = JSON.stringify(marioGame);
 console.log(data);
 // The nested objects are also converted into JSON format.
-debugger;
+// debugger;
 const prettyJsonGame = JSON.stringify(marioGame, null, 2);
 

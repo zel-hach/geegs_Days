@@ -1,3 +1,4 @@
+debugger;
 let client = "John";
 
 const groceries = {
@@ -9,7 +10,6 @@ const groceries = {
         meansOfPayment : ["cash", "creditCard"]
     }
 }
-
 
 
 const displayGroceries = ()=>{

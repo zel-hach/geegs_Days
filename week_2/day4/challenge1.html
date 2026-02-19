@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Challenge1</title>
+</head>
+<body>
+    <form id="myForm">
+        <div id="json">
+            <input type="text" name="name" id="name" placeholder="name" required>
+            <input type="text" name="lastname" id="lastname"  placeholder="lastname">
+            <button type="submit">Send</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const lastname = document.getElementById("lastname").value.trim();
+
+            const data = {
+                name: name,
+                lastname: lastname
+            };
+            const div = document.getElementById('json');
+            const p = document.createElement('p');
+            p.innerText =  JSON.stringify(data);
+            div.appendChild(p);
+            console.log(data); 
+           
+        });
+    </script>
+</body>
+</html>

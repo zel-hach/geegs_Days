@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Projet</title>
+</head>
+<body>
+    <section id="section"></section>
+    <button id="button">Generate Quote</button>
+    <button id="b2">Number of Caractere(with space)</button>
+    <button id="b3">Number of Caractere(without space)</button>
+    <button id="b4">Number of words </button>
+    <button id="b5">Like</button>
+    <div>
+        <label for="Quote">Quote</label>
+        <input type="text" name="Quote" id="Quote">
+        <label for="Author">Author</label>
+        <input type="text" name="Author" id="Author">
+        <button id="b1">Submit</button>
+    </div>
+
+    <h2>Filter Quotes by Author</h2>
+    <form id="filterForm">
+        <input type="text" id="authorInput" placeholder="Enter author name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="navigation" style="display:none; margin-top:10px;">
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+
+    <script>
+        /////////////////////////////////////////////// part 1 /////////////////////////////////////////////////////////////////////////////
+        const quotes = [
+            {
+                id: 0,
+                author: "Albert Einstein",
+                quote: "Life is like riding a bicycle. To keep your balance you must keep moving.",
+                like:0
+            },
+            {
+                id: 1,
+                author: "Nelson Mandela",
+                quote: "It always seems impossible until it is done.",
+                like:0
+            },
+            {
+                id: 2,
+                author: "Steve Jobs",
+                quote: "Stay hungry, stay foolish.",
+                like:0
+            }
+        ];
+
+        const section = document.getElementById('section');
+        const button = document.getElementById('button');
+
+        function shuffleQuotes() {
+            quotes.sort(() => Math.random() - 0.5);
+        }
+
+        shuffleQuotes();
+
+        let currentIndex = 0;
+
+        button.addEventListener('click', () => {
+            if (currentIndex >= quotes.length) {
+                currentIndex = 0;
+                shuffleQuotes();
+            }
+            const oldDiv = document.getElementById('divQuotes');
+            if (oldDiv) {
+                oldDiv.remove();
+            }
+            const div = document.createElement('div');
+            div.setAttribute('id', 'divQuotes');
+
+            const p = document.createElement("p");
+            p.innerText = `"${quotes[currentIndex].quote}"`;
+            p.setAttribute('id','quote');
+            p.setAttribute('index',`${quotes[currentIndex].id}`);
+
+            const span = document.createElement('span');
+            span.innerText = `— ${quotes[currentIndex].author}`;
+
+            div.appendChild(p);
+            div.appendChild(span);
+
+            section.appendChild(div);
+
+            currentIndex++;
+        });
+        ///////////////////////////////////////////part 2 ////////////////////////////////////////////////////
+    const b1= document.getElementById("b1");
+    b1.addEventListener('click',()=>{
+        const quote = document.getElementById('Quote');
+        const Author = document.getElementById('Author');
+
+        const obj = {
+            id:quotes.length,
+            author: Author.value,
+            quote:quote.value,
+            like:0
+        }
+        quotes.push(obj);
+        quote.value ="";
+        Author.value ="";
+    })
+
+document.getElementById('b2').addEventListener('click',(e)=>{
+    const quote = document.getElementById('quote');
+    if(quote)
+    {
+        console.log(quote.textContent.length);
+    }
+})
+document.getElementById('b3').addEventListener('click',(e)=>{
+     const quote = document.getElementById('quote');
+     if(quote)
+     {
+        const withoutSpace = quote.textContent.split(" ").join("");
+        console.log(withoutSpace.length);
+    }
+})
+document.getElementById('b4').addEventListener('click',()=>{
+    const quote = document.getElementById('quote');
+    if(quote)
+    {
+        console.log(quote.textContent.trim().split(/\s+/).length);
+    }
+})
+document.getElementById('b5').addEventListener('click',()=>{
+
+    const quote = document.getElementById('quote');
+    if(quote)
+    {
+        quotes[quote.getAttribute('index')].like = quotes[quote.getAttribute('index')].like + 1
+        console.log(quotes[quote.getAttribute('index')].like);
+    }
+})
+
+//////////////////////////////////// part 3 //////////////////////////////////////////////////////////////////////////////////
+const filterForm = document.getElementById('filterForm');
+const authorInput = document.getElementById('authorInput');
+
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const navigation = document.getElementById('navigation');
+
+let ilteredQuotes  = [];
+let currentIndex1 = 0
+
+function displayQuote(currentIndex1){
+  const olddiv= document.getElementById('filtred');
+        if(olddiv){
+            olddiv.remove();
+        }
+        const div = document.createElement('div');
+        div.setAttribute('id','filtred');
+         const p = document.createElement("p");
+         console.log(filteredQuotes)
+        p.innerText = `"${filteredQuotes[currentIndex1].quote}"`;
+        p.setAttribute('id','quote');
+        p.setAttribute('index',`${filteredQuotes[currentIndex1].id}`);
+
+        const span = document.createElement('span');
+        span.innerText = `— ${filteredQuotes[currentIndex1].author}`;
+
+        div.appendChild(p);
+        div.appendChild(span);
+        navigation.appendChild(div);
+        navigation.style.display="block";
+    }
+filterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const authorName = authorInput.value.trim().toLowerCase();
+
+    filteredQuotes = quotes.filter(q => q.author.toLowerCase() === authorName);
+    currentIndex1 = 0;
+    if (filteredQuotes.length === 0) {
+        section.innerHTML = "<p>No quotes found for this author.</p>";
+        navigation.style.display = "none";
+    } else {
+        displayQuote(currentIndex1);
+    }      
+});
+
+prevButton.addEventListener('click', () => {
+  if (currentIndex > 0) {
+     currentIndex--;
+      displayQuote(currentIndex);
+ }
+});
+
+nextButton.addEventListener('click', () => {
+    if (currentIndex < filteredQuotes.length - 1) {
+        currentIndex++;
+        displayQuote(currentIndex);
+    }
+});
+    </script>
+</body>
+</html>

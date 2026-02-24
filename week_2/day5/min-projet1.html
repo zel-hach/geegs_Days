@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>minProjet_day5</title>
+        <link href="https://fonts.cdnfonts.com/css/sega-logo-font" rel="stylesheet">
+    </head>
+    <body>
+        <style>
+            body{
+                background-color: #6adf82;
+                display: flex;
+                flex-direction: column;
+            }
+           .container {
+    flex: 2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #6757cb;
+    background-image: url("https://github.com/devtlv/studentsGitHub/blob/master/JS/Week%204/Day5/Mini%20Projects/Mini%20Project%201%20(Robots)/circuit-pattern.png?raw=true");
+    background-repeat: repeat;
+    background-position: center;
+}
+
+            .card{
+                margin: 5px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 300px;
+                min-height: 450px;
+                border-radius: 10px;
+                background:
+        linear-gradient(rgba(88, 174, 188, 0.8), rgba(88, 174, 188, 0.8)),
+        url("https://github.com/devtlv/studentsGitHub/blob/master/JS/Week%204/Day5/Mini%20Projects/Mini%20Project%201%20(Robots)/card-pattern.png?raw=true");
+
+    background-repeat: repeat;
+    background-position: center;
+            }
+            .img{
+            width: 300px;
+            height: 300px;
+            background-color: #303952;
+            border-radius: 100%;
+            }
+            .paragraph{
+                
+                display: flex;
+                flex-direction: column;
+            }
+            .logo{
+        
+            font-family: 'SEGA LOGO FONT', sans-serif;
+            }
+            .header{
+                flex: 1;
+                display: flex;
+                align-items: center;
+                gap:20px;
+                width:100%;
+            }
+            .inputSearch{
+                width: 700px;
+                height: 30px;
+                outline:none;
+                border: 2px solid #58aebc;
+            }
+        </style>
+        <div>
+            <div class="header">
+                <h1 class="logo">RobotFriends</h1>
+                <input type="text" name="search" id="search" placeholder="Search Robot" class="inputSearch">
+            </div>
+        </div>
+        <div class="container" id="container"></div>
+    </body>
+    <script>
+              const robots = [
+          {
+            id: 1,
+            name: 'Leanne Graham',
+            username: 'Bret',
+            email: 'Sincere@april.biz',
+            image: 'https://robohash.org/104.png?set=set4&size=150x150'
+          },
+          {
+            id: 2,
+            name: 'Ervin Howell',
+            username: 'Antonette',
+            email: 'Shanna@melissa.tv',
+            image: 'https://robohash.org/K2X.png?set=set4&size=150x150'
+          },
+          {
+            id: 3,
+            name: 'Clementine Bauch',
+            username: 'Samantha',
+            email: 'Nathan@yesenia.net',
+            image: 'https://robohash.org/914.png?set=set4&size=150x150'
+          },
+          {
+            id: 4,
+            name: 'Patricia Lebsack',
+            username: 'Karianne',
+            email: 'Julianne.OConner@kory.org',
+            image: 'https://robohash.org/N5D.png?set=set1&size=150x150'
+          },
+          {
+            id: 5,
+            name: 'Chelsey Dietrich',
+            username: 'Kamren',
+            email: 'Lucio_Hettinger@annie.ca',
+            image: 'https://robohash.org/macha'
+          },
+          {
+            id: 6,
+            name: 'Mrs. Dennis Schulist',
+            username: 'Leopoldo_Corkery',
+            email: 'Karley_Dach@jasper.info',
+            image: 'https://robohash.org/39G.png?set=set2&size=150x150'
+          },
+          {
+            id: 7,
+            name: 'Kurtis Weissnat',
+            username: 'Elwyn.Skiles',
+            email: 'Telly.Hoeger@billy.biz',
+            image: 'https://robohash.org/TLT.png?set=set2&size=150x150'
+          },
+          {
+            id: 8,
+            name: 'Nicholas Runolfsdottir V',
+            username: 'Maxime_Nienow',
+            email: 'Sherwood@rosamond.me',
+            image: 'https://robohash.org/MRB.png?set=set2&size=150x150'
+          },
+          {
+            id: 9,
+            name: 'Glenna Reichert',
+            username: 'Delphine',
+            email: 'Chaim_McDermott@dana.io',
+            image:'https://robohash.org/V3O.png?set=set4&size=150x150'
+          },
+          {
+            id: 10,
+            name: 'Clementina DuBuque',
+            username: 'Moriah.Stanton',
+            email: 'Rey.Padberg@karina.biz',
+            image:'https://robohash.org/104.png?set=set4&size=150x150'
+          }
+          ];
+function addRobot(robots) {
+  const div = document.getElementById('container');
+  div.innerHTML = "";
+  if (!robots || robots.length === 0) {
+    div.textContent = "No robots found";
+    return;
+  }
+
+  robots.forEach((robot) => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const img = document.createElement('img');
+    img.src = robot.image;
+    img.classList.add('img');
+
+    const h1 = document.createElement('h1');
+    h1.textContent = robot.name;
+
+    const span = document.createElement('span');
+    span.textContent = robot.email;
+
+    card.appendChild(img);
+    card.appendChild(h1);
+    card.appendChild(span);
+
+    div.appendChild(card);
+  });
+}
+
+addRobot(robots);
+
+const search = document.getElementById('search');
+
+search.addEventListener('input', (e) => {
+  const filter = robots.filter((item) =>
+    item.name.toLowerCase().includes(e.target.value.toLowerCase())
+  );
+
+  addRobot(filter);
+});
+
+    </script>
+</html>

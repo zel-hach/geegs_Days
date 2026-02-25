@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Daily Challenge Gifs</title>
+    </head>
+    <style>
+        body{
+            padding: 3px;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5px;
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+        }
+    </style>
+    <body >
+        <div style="display: flex;">
+            <input type="text" name="category" id="category">
+            <button id="button">find</button>
+        </div>
+        <button id="append">Append</button>
+        <button id="deleteAll">Delete ALL</button>
+        <div class="container" id="container"></div>
+    </body>
+    <script>
+
+    async function getData(category){
+            try{
+                const response = await fetch(`https://api.giphy.com/v1/gifs/search?q=${category}&rating=g&api_key=GQymlSLIh8mWZdeGWbeFeONywagsGx1R`);
+                
+                console.log(response)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json()
+                console.log(data);
+               const randomData = data.data[Math.floor(Math.random() * data.data.length)];
+                const div = document.getElementById('container');
+                const carddiv = document.createElement('div');
+                carddiv.classList.add('card');
+                const img = document.createElement('img');
+                img.src = randomData.images.original.url;
+                img.style.width='400px';
+                img.style.height='400px';
+                const button = document.createElement('button');
+                button.textContent='Delete';
+                carddiv.appendChild(img);
+                carddiv.appendChild(button);
+                div.appendChild(carddiv);
+            }catch(e){
+                console.log('cannot fetch data: ',e.message);
+            }
+        }
+    const button = document.getElementById('button');
+    button.addEventListener('click',()=>{
+        try{
+            const category = document.getElementById('category');
+            if(!category.value)
+                return ;
+            getData(category.value);
+        }catch(error)
+        {
+            console.log('Error',error)
+        }
+    })
+    const buttonAppend = document.getElementById('append');
+    buttonAppend.addEventListener('click',()=>{
+        try{
+            getData('hilariou');
+        }catch(error)
+        {
+            console.log('Error',error)
+        }
+    })
+
+    const buttonDelete = document.getElementById('deleteAll');
+    buttonDelete.addEventListener('click',()=>{
+        const div = document.getElementById('container');
+        if(div)
+        {
+            div.innerHTML ='';
+        }
+
+    })
+
+   container.addEventListener('click', (e) => {
+    if (e.target.textContent === 'Delete') {
+        e.target.parentElement.remove();
+    }
+});
+</script>
+</html>

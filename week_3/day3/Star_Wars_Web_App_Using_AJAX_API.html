@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Star Wars Web App Using AJAX API</title>
+        <link href="https://fonts.cdnfonts.com/css/fathers-outline" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    </head>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("https://i.giphy.com/media/TxVVB6PfWMjE4/200.webp");
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+        }
+        .header{
+            font-family: 'Fathers Outline', sans-serif;
+            font-size: 100px;
+            color: #fdcd30;
+                                                
+        }
+        .card{
+            width: 700px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid #fdcd30;
+            border-radius: 10px;
+            color: #fdcd30;
+            font-size: large;
+        }
+        .button{
+            border: 3px solid #fdcd30;
+            padding: 6px 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h1 class="header">Star Wars</h1>
+            <div class="card" id="card">
+            </div>
+            <button class="button" id="button">Find Someone</button>
+        </div>
+    </body>
+    <script>
+        const card = document.getElementById('card');
+        const button = document.getElementById('button');
+       button.addEventListener('click', async () => {
+    try {
+        card.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="font-size:50px;"></i>`;
+
+        const response = await fetch('https://www.swapi.tech/api/people');
+        if (!response.ok) throw new Error('Failed to fetch data');
+
+        const data = await response.json();
+        const randomData = data.results[
+            Math.floor(Math.random() * data.results.length)
+        ];
+
+        const res = await fetch(`https://www.swapi.tech/api/people/${randomData.uid}`);
+        if (!res.ok) throw new Error('Failed to fetch person details');
+
+        const person = await res.json();
+        const info = person.result.properties;
+
+        card.innerHTML = `
+            <h2>${info.name}</h2>
+            <p><strong>Height:</strong> ${info.height}</p>
+            <p><strong>Gender:</strong> ${info.gender}</p>
+            <p><strong>Birth Year:</strong> ${info.birth_year}</p>
+        `;
+
+    } catch (error) {
+        card.innerHTML = "<p >Oh No! That person isnt available. </p>";
+        console.log('Error:', error);
+    }
+});
+    </script>
+</html>

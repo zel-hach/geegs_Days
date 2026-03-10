@@ -1,0 +1,32 @@
+
+-- exercices xp ninja
+
+select * from purchases;
+select * from customers;
+select id,first_name 
+from customers
+order by first_name asc offset (select count(*) - 2 from customers);
+
+DELETE FROM purchases p
+USING customers c
+WHERE p.customer_id = c.id;
+
+SELECT 
+    p.id,
+    c.first_name,
+    c.last_name,
+    p.id,
+    p.quantity_purchased
+FROM purchases p
+LEFT JOIN customers c
+ON p.customer_id = c.id;
+
+SELECT 
+    p.id,
+    c.first_name,
+    c.last_name,
+    p.id,
+    p.quantity_purchased
+FROM purchases p
+INNER JOIN customers c
+ON p.customer_id = c.id;

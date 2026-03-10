@@ -1,0 +1,147 @@
+
+-- exercice 1
+SELECT rating ,count(*) as numberFilm
+from film
+group by rating 
+order by rating;
+
+select * from film;
+SELECT *
+FROM film
+WHERE (rating = 'G' OR rating = 'PG-13')
+  AND length <= 120
+  AND rental_rate <= 3.00
+ORDER BY title ASC;
+
+select * from customer;
+UPDATE customer 
+SET first_name = 'zineb',
+	last_name = 'Elhachimi'
+where customer_id = 1;
+
+UPDATE address
+SET address = 'sidi maarouf Casablanca'
+WHERE address_id = (
+    SELECT address_id
+    FROM customer
+    WHERE customer_id = 1
+);
+
+-- select * from address
+-- where address ='sidi maarouf Casablanca';
+
+-- select * from customer
+-- where address_id = 5;
+
+-- exercice 2
+
+select * from students;
+
+Update students
+set birth_date = '02/02/1998'
+where last_name ilike 'benichou';
+
+Update students
+set last_name='Guez'
+where first_name ilike 'david';
+
+delete from students 
+where concat(first_name,' ',last_name) = 'Lea Benichou';
+
+select count(*) as numberOfStudent from students;
+
+select count(*) as numberOfStudent 
+from students
+where  birth_date > '1/01/2000';
+
+ALTER TABLE students
+ADD COLUMN math_grade INT;
+
+update students
+set math_grade = 80
+where id_student = 1;
+
+update students
+set math_grade = 90
+where id_student = 2 or id_student = 4;
+
+update students
+set math_grade = 40
+where id_student = 6;
+
+select count(*) as numberofStudents
+from students
+where math_grade > 83;
+
+INSERT INTO students (first_name, last_name, birth_date, math_grade)
+SELECT first_name, last_name, birth_date, 70
+FROM students
+where first_name='Omer' and last_name='Simpson';
+
+SELECT 
+    first_name,
+    last_name,
+    COUNT(math_grade) AS total_grade
+FROM students
+GROUP BY first_name, last_name;
+
+-- exercice 3
+CREATE TABLE purchases (
+    id SERIAL PRIMARY KEY,
+    customer_id INT,
+    item_id INT,
+    quantity_purchased INT,
+    FOREIGN KEY (customer_id) REFERENCES customers(id),
+    FOREIGN KEY (item_id) REFERENCES items(id)
+);
+	
+)
+
+
+
+INSERT INTO purchases (customer_id, item_id, quantity_purchased)
+VALUES (
+    (SELECT customer_id FROM customers WHERE first_name = 'Scott' AND last_name = 'Scott'),
+    (SELECT item_id FROM items WHERE item_name = 'Fan'),
+    1
+);
+
+INSERT INTO purchases (customer_id, item_id, quantity_purchased)
+VALUES (
+    (SELECT customer_id FROM customers WHERE first_name = 'Melanie' AND last_name = 'Johnson'),
+    (SELECT item_id FROM items WHERE item_name = 'Large Desk'),
+    10
+);
+
+INSERT INTO purchases (customer_id, item_id, quantity_purchased)
+VALUES (
+    (SELECT customer_id FROM customers WHERE first_name = 'Greg' AND last_name = 'Jones'),
+    (SELECT item_id FROM items WHERE item_name = 'Small Desk'),
+    2
+);
+select * from purchases;
+SELECT *
+FROM purchases p
+JOIN customers c
+ON p.customer_id = c.id;
+
+SELECT *
+FROM purchases
+WHERE customer_id = 5;
+
+SELECT *
+FROM purchases p
+JOIN items i
+ON p.item_id = i.id
+WHERE i.name = 'Large Desk'
+   OR i.name = 'Small Desk';
+
+SELECT c.first_name, c.last_name, i.name
+FROM purchases p
+JOIN customers c
+ON p.customer_id = c.id
+JOIN items i
+ON p.item_id = i.id;
+
+INSERT INTO purchases (customer_id, quantity_purchased)
+VALUES (3, 1);

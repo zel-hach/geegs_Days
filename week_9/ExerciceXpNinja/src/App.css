@@ -1,0 +1,147 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 48px 16px 32px;
+  color: #e2e8f0;
+  gap: 20px;
+}
+
+.App-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.App-subtitle {
+  margin: -8px 0 0;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+.AddTaskForm {
+  width: min(480px, 100%);
+  text-align: left;
+}
+
+.AddTaskForm-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #94a3b8;
+}
+
+.AddTaskForm-row {
+  display: flex;
+  gap: 10px;
+}
+
+.AddTaskForm-input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: rgba(15, 23, 42, 0.6);
+  color: #f1f5f9;
+  font-size: 1rem;
+  outline: none;
+}
+
+.AddTaskForm-input:focus {
+  border-color: #38bdf8;
+}
+
+.AddTaskForm-submit {
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.AddTaskForm-submit:hover {
+  filter: brightness(1.05);
+}
+
+.TaskList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: min(480px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.TaskList-empty {
+  margin: 8px 0 0;
+  width: min(480px, 100%);
+  text-align: left;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.TaskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.TaskItem--done .TaskItem-text {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.TaskItem-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+}
+
+.TaskItem-check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #38bdf8;
+}
+
+.TaskItem-text {
+  word-break: break-word;
+}
+
+.TaskItem-remove {
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: transparent;
+  color: #f87171;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.TaskItem-remove:hover {
+  background: rgba(248, 113, 113, 0.12);
+}

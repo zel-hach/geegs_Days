@@ -3,6 +3,7 @@ import './App.css'
 import Car from './Components/Car';
 import Color from './Components/Color';
 import Events from './Components/Events';
+import Forms from './Components/Forms';
 import Phone from './Components/Phone';
 
 
@@ -15,6 +16,7 @@ function App() {
       <Events></Events>
       <Phone></Phone>
       <Color></Color>
+      <Forms></Forms>
     </>
   )
 }

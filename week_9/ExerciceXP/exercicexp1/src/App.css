@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  background: var(--bg);
+  color: var(--text);
+  padding: 32px 16px;
+  gap: 16px;
+}
+
+.App-link {
+  color: var(--primary);
+}
+
+.App-topbar {
+  width: min(720px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+}
+
+.App-themeLabel {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.ThemeSwitcher {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.ThemeSwitcher:hover {
+  border-color: color-mix(in srgb, var(--primary) 65%, var(--border));
+}
+
+.ThemedPanel {
+  width: min(720px, 100%);
+  text-align: left;
+  border: 1px solid var(--border);
+  border-left-width: 6px;
+  border-radius: 12px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+}
+
+.ThemedPanel-title {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.ThemedPanel-body {
+  opacity: 0.95;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -4,10 +4,12 @@ const Events = () => {
     const [isToggleOn,setIsToggleOn] = useState(true)
 
     const clickMe = () =>{
+        e.stopPropagation();
         alert("I was clicked");
     }
 
     const handleKeyDown = (e) =>{
+        e.stopPropagation();
         if(e.code === 'Enter')
         {
             alert(`The Enter key was pressed, your input is: ${e.target.value}`);
